@@ -1,0 +1,26 @@
+{
+  "name": "passport-localstrategy",
+  "version": "1.0.0",
+  "description": "Learning the PassportlocalStrategy",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "server": "nodemon  -r dotenv/config ./src/index.js"
+  },
+  "keywords": [
+    "Javascript",
+    "Passport"
+  ],
+  "author": "SAGAR SINGH",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.2.4",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

@@ -5,15 +5,16 @@ passport.use(new localStrategy(
     async(userName,password,done)=>{
         try {
             const user = await User.findOne({username:userName})
-            if(!user){
-                return done(null,false,{message:'User not found'})
-            }
-            if(!user.matchPassword(password)){
-                return done(null,false,{message:'Invalid Password'})
+            const matchPassword = await user.matchPassword({password:password})
+
+            if(!user || !matchPassword){
+                return done(null,false,{message:'Invalid Username or Password'})
             }
             return done(null,user)
+
+    
         } catch (error) {
-            console.log(`Error Signing up User: ${error.message}`);
+            return done(error,false,{message:'Error Signing up User'})
             
         }
 

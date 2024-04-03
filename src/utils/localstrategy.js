@@ -1,12 +1,12 @@
 import passport from "passport";
 import { Strategy as localStrategy } from "passport-local";
-import User from "../models/user.models.js";
+import {User} from "../models/user.models.js";
 passport.use(
   new localStrategy(async (userName, password, done) => {
     try {
       const user = await User.findOne({ username: userName });
-      const matchPassword = await user.matchPassword({ password: password });
-
+      const matchPassword = user.password === password;
+      
       if (!user || !matchPassword) {
         return done(null, false, { message: "Invalid Username or Password" });
       }
@@ -16,3 +16,5 @@ passport.use(
     }
   })
 );
+
+export default passport;

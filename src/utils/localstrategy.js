@@ -8,6 +8,8 @@ passport.use(
       const matchPassword = user.password === password;
       
       if (!user || !matchPassword) {
+        console.log("Invalid Username or Password");
+        
         return done(null, false, { message: "Invalid Username or Password" });
       }
       return done(null, user);
